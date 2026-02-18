@@ -42,7 +42,7 @@ authController.authenticate = (req, res, next) => {
         const token = tokenString.replace('Bearer ', '');
         jwt.verify(token, JWT_SECRET_KEY, (error, payload) => {
             if(error){
-                throw new Error('만료된 토큰입니다.');
+                throw new Error('로그인이 필요합니다.');
             }
             req.userId = payload._id;
             next();
